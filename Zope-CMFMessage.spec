@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.python
 %define		zope_subname CMFMessage
 Summary:	Product provides a 'Who Is Online'
 Summary(pl):	Produkt umo¿liwiaj±cy sprawdzanie, kto jest zalogowany
