@@ -3,12 +3,12 @@
 Summary:	Product provides a 'Who Is Online'
 Summary(pl):	Produkt umo¿liwiaj±cy sprawdzanie, kto jest zalogowany
 Name:		Zope-%{zope_subname}
-Version:	1.0
+Version:	1.1
 Release:	1
 License:	GPL
 Group:		Networking/Daemons
-Source0:	http://dl.sourceforge.net/collective/%{zope_subname}.tgz
-# Source0-md5:	764a8e35ba127f905d61446fded9e247
+Source0:	http://dl.sourceforge.net/collective/%{zope_subname}-1_1.tgz
+# Source0-md5:	fc38580a86005cf2781504ea9a400ec3
 URL:		http://sourceforge.net/projects/collective/
 Requires(post,postun):	/usr/sbin/installzopeproduct
 %pyrequires_eq	python-modules
@@ -25,6 +25,7 @@ Produkt umo¿liwiaj±cy sprawdzanie, kto jest zalogowany.
 
 %prep
 %setup -q -c
+find . -type f -name *.pyc | xargs rm -rf
 
 %build
 mkdir docs docs/CMFMessage docs/CMFUserTrackTool docs/UserTrack
