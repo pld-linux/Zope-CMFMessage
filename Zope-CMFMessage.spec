@@ -3,7 +3,7 @@ Summary:	Product provides a 'Who Is Online'
 Summary(pl):	Produkt umo¿liwiaj±cy sprawdzanie, kto jest zalogowany
 Name:		Zope-%{zope_subname}
 Version:	1.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Networking/Daemons
 Source0:	http://dl.sourceforge.net/collective/%{zope_subname}-1_1.tgz
