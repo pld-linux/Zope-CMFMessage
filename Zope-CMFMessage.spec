@@ -9,8 +9,9 @@ Group:		Networking/Daemons
 Source0:	http://dl.sourceforge.net/collective/%{zope_subname}-1_1.tgz
 # Source0-md5:	fc38580a86005cf2781504ea9a400ec3
 URL:		http://sourceforge.net/projects/collective/
-Requires(post,postun):	/usr/sbin/installzopeproduct
 BuildRequires:	python
+BuildRequires:	rpmbuild(macros) >= 1.268
+Requires(post,postun):	/usr/sbin/installzopeproduct
 %pyrequires_eq	python-modules
 Requires:	Zope
 Requires:	Zope-CMF
@@ -26,8 +27,6 @@ Produkt umo¿liwiaj±cy sprawdzanie, kto jest zalogowany.
 %prep
 %setup -q -c
 find . -type f -name *.pyc | xargs rm -rf
-
-%build
 mkdir docs docs/CMFMessage docs/CMFUserTrackTool docs/UserTrack
 mv -f CMFMessage/{AUTHORS,INSTALL,README} docs/CMFMessage
 mv -f CMFUserTrackTool/{AUTHORS,readme.txt} docs/CMFUserTrackTool
@@ -53,18 +52,14 @@ rm -rf $RPM_BUILD_ROOT
 for p in CMFMessage CMFUserTrackTool UserTrack ; do
 	/usr/sbin/installzopeproduct %{_datadir}/%{name}/$p
 done
-if [ -f /var/lock/subsys/zope ]; then
-	/etc/rc.d/init.d/zope restart >&2
-fi
+%service -q zope restart
 
 %postun
 if [ "$1" = "0" ]; then
 	for p in CMFMessage CMFUserTrackTool UserTrack ; do
 		/usr/sbin/installzopeproduct -d $p
 	done
-fi
-if [ -f /var/lock/subsys/zope ]; then
-	/etc/rc.d/init.d/zope restart >&2
+	%service -q zope restart
 fi
 
 %files
