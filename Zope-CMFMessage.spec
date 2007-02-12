@@ -1,6 +1,6 @@
 %define		zope_subname CMFMessage
 Summary:	Product provides a 'Who Is Online'
-Summary(pl.UTF-8):   Produkt umożliwiający sprawdzanie, kto jest zalogowany
+Summary(pl.UTF-8):	Produkt umożliwiający sprawdzanie, kto jest zalogowany
 Name:		Zope-%{zope_subname}
 Version:	1.1
 Release:	2
